@@ -1,4 +1,3 @@
-from math import ceil
 bx, by, cx, cy = input().split()
 bx, by, cx, cy = int(bx), int(by), int(cx), int(cy)
 a, cn = [[0, 1, 0]], [bx + by - cx - cy, by - cy + 1]

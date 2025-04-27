@@ -1,13 +1,15 @@
-# TODO: ...
 N = int(input())
-m = [[0 for _ in range(N + 1)] for _ in range(N + 1)]
-l = []
-cp = []
-r = []
+p, r, b = [[0, 0, 0]], [], {}
 while True:
-    iy, ix, iv = input().split()
-    if iy == ix == iv == '0':
-        break
-    iy, ix, iv = int(iy), int(ix), int(iv)
-    m[iy][ix] = iv
-    l.insert(0, [iy, ix, iv])
+    x, y, n = input().split()
+    if x == y == n == '0': break
+    x, y, n = int(x), int(y), int(n)
+    b[x] = { y: n }
+p[0][2] = (b[1][1] if 1 in b and 1 in b[1] else 0)
+while len(p) != 0:
+    x, y, n = p[0][0], p[0][1], p[0][2]
+    if x != N: p.append([x + 1, y, n + (b[x + 1][y] if x + 1 in b and y in b[x + 1] else 0)])
+    if y != N: p.append([x, y + 1, n + (b[x][y + 1] if x in b and y + 1 in b[x] else 0)])
+    if x == y == N: r.append(n)
+    del p[0]
+print(m)
